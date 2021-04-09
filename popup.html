@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Simple Timer</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Choose your time</h1>
+        <div class="inputs_wrapper">
+            <div>
+                <label class="label">Choose hours</label>
+                <select class="hours" name="hours"></select>
+            </div>
+            <div>
+                <label class="label">Choose minutes</label>
+                <select class="minutes" name="minutes"></select>
+            </div>
+            <div>
+                <label class="label">Choose seconds</label>
+                <select class="seconds" name="seconds"></select>
+            </div>
+        </div>
+        <div class="button_wrapper">
+            <button class="start_button">Start</button>
+            <p class="started_text" style="display: none;"></p>
+            <button class="reset_button" style="display: none;">Reset timer</button>
+        </div>
+    </div>
+<script src="timeConsts.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

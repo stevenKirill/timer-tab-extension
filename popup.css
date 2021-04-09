@@ -1,0 +1,39 @@
+body {
+    width: 500px;
+}
+.hours, .minutes, .seconds {
+    font-size: 20px;
+    margin-top: 10px;
+    width: 70px;
+    border: 1px solid blue;
+    border-radius: 4px;
+}
+.inputs_wrapper {
+    display: flex;
+}
+.label {
+    font-size: 20px;
+}
+.title {
+    text-align: center;
+}
+.button_wrapper {
+    margin-top: 10px;
+}
+.start_button {
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+.started_text {
+    text-align: center;
+    font-size: 17px;
+}
+.reset_button {
+    font-size: 15px;
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+}
