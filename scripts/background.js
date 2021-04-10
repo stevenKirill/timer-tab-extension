@@ -1,11 +1,15 @@
 let stopTime = null; // это время в мс в будущем когда надо остановиться
 let timer = null;
 let currTab = null;
+let currentTime = null;
 
+/** 
+ * Слушатель обработчик сообщений от content script и popup script
+ */
 chrome.runtime.onMessage.addListener(function(request) {
     if (request.type == "remove-tab") {
         chrome.tabs.remove(currTab, () => {
-            console.log('tab was removed')
+            console.info('tab was removed')
         });
     };
 
@@ -29,6 +33,11 @@ chrome.runtime.onMessage.addListener(function(request) {
     if (request.type === 'stay') {
         clearInterval(timer);
         timer = null;
+    };
+    if(request.type === 'exist-timer') {
+        if (timer !== null) {
+            chrome.tabs.sendMessage(currTab,{message: 'time', timeString : currentTime});
+        }
     }
 });
 
@@ -55,10 +64,21 @@ chrome.runtime.onMessage.addListener(function(request) {
         clearInterval(timer);
         timer = null;
     } else {
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        const time = `${hours}:${minutes}:${seconds}`;
-        console.log(time);
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (hours < 10) {
+            hours = '0' + hours;
+        };
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        };
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        };
+
+        currentTime = `${hours}:${minutes}:${seconds}`;
+        chrome.tabs.sendMessage(currTab,{message: 'time', timeString : currentTime});
+        console.log(currentTime)
     }
 };

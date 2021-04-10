@@ -1,6 +1,16 @@
+window.onload = function() {
+    chrome.runtime.sendMessage({type: "exist-timer", options: {
+        message: "Идет ли таймер"
+    }});
+};
 chrome.runtime.onMessage.addListener(gotMessage);
 let popUp = null;
+const timerElement = createHelpBox();
 
+/**
+ * Функция получения сообщения от background script
+ * @param {*} request ответ от background script
+ */
 function gotMessage(request) {
     const {message} = request;
     if (message === 'finished') {
@@ -8,7 +18,12 @@ function gotMessage(request) {
         .then(() => {
             initListeners();
         })
-    }
+    };
+    if (message === 'time') {
+        const {timeString} = request;
+        timerElement.style.display = 'block';
+        timerElement.innerText = timeString;
+    };
 };
 
 /**
@@ -118,6 +133,41 @@ function removePopUp() {
             title: "Остаться на вкладке",
             message: "Остаться на вкладке"
         }});
+    };
+    timerElement.style.display = 'none';
+    timerElement.innerText = '';
+};
+
+/**
+ * Функция создания окна со временем и кнопкой сброса времени
+ */
+function createHelpBox() {
+    const block = document.createElement('div');
+    block.classList.add('help_box_timer');
+    block.style.display = 'none';
+    createHelpBoxStyles();
+    document.body.append(block);
+    return block;
+};
+
+/**Стили для окошка со временем */
+function createHelpBoxStyles() {
+    const styles = document.createElement('style');
+    styles.innerHTML = `
+    .help_box_timer {
+        width: 80px;
+        height: 50px;
+        text-align: center;
+        padding: 5px;
+        color: white;
+        font-size: 17px;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10000000;
+        background-color: blue;
     }
+    `;
+    document.head.appendChild(styles);
 };
 

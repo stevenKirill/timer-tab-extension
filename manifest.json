@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web page Timer",
     "short_name": "Timer",
-    "description": "description",
+    "description": "Simple timer for tab",
     "version": "1.0",
     "content_scripts": [
       {
