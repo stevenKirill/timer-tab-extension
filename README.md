@@ -4,4 +4,4 @@ Made simply for fun.
 
 Расширение для хрома. Таймер для вкладки. Можно поставить таймер и пользоваться сайтом в данной вкладке. Если время истекло, будет показано окно в котором пользователь может либо продолжить находиться во вкладке или же выйти.
 
-![Screenshot](https://github.com/[stevenKirill]/[timer-tab-extension]/blob/[master]/screen.png?raw=true)
+![Screenshot](https://github.com/[stevenKirill]/[timer-tab-extension]/blob/[master]/screen.png?raw=false)
