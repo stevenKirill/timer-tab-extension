@@ -3,3 +3,5 @@ Works in one tab, for exaple when you use one site for a long time like youtube 
 Made simply for fun.
 
 Расширение для хрома. Таймер для вкладки. Можно поставить таймер и пользоваться сайтом в данной вкладке. Если время истекло, будет показано окно в котором пользователь может либо продолжить находиться во вкладке или же выйти.
+
+![alt text](https://github.com/[stevenKirill]/[timer-tab-extension]/blob/[master]/screen.png?raw=true)
